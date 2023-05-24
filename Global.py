@@ -14,6 +14,7 @@ ball_dir_y = -1
 ball_dir_x = 1 #*
 land = False #*
 jumping = False
+first_jump=True
 moving_up = 16
 moving_down = 0
 increaseR = True

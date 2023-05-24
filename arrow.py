@@ -26,9 +26,14 @@ def keypress(key, x, y):
 
 	# """ jumping """
 	elif key == GLUT_KEY_UP:
-		G.keystates[2] = True
-		G.jumping = True
-		G.on_plate=False
+		if G.first_jump:
+			G.keystates[2] = True
+			G.jumping = True
+			
+		elif G.on_plate:
+			G.keystates[2] = True
+			G.jumping = True
+			G.on_plate=False
 
 	# """ BEGIN"""
 	elif key == b' ' and G.gamestart is False:

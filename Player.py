@@ -59,6 +59,9 @@ def player_mover_y(player):
 					plate.landed = True
 				if G.hight_score < G.score:
 					G.hight_score = G.score
+				"""check if the first jump has been done successfully"""
+				if G.first_jump:
+					G.first_jump=False
 
 				""" collison detection with plate hazelnuts"""
 				if plate.hazelnut:
@@ -99,6 +102,7 @@ def player_mover_y(player):
 		G.moving_up = 16
 		G.ball_y_velocity = 0
 		G.on_plate = False
+		G.first_jump=True
 		if G.stand_left:
 			G.index=6
 		else:
