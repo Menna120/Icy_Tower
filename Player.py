@@ -7,7 +7,7 @@ G.squirrel = Rec(80, 0 ,530, 470)
 def player_mover_x(player):
 	global man_path
 	G.ball_x_velocity = 0  # reset x velocity
-	if G.increaseF == True:
+	if G.keystates[0] or G.keystates[1]:
 		G.factor += 1
 	else:
 		G.factor=1
@@ -15,7 +15,7 @@ def player_mover_x(player):
 			G.ball_x_velocity += G.factor * 0.25 * G.ball_dir_x
 			G.index=14+(G.factor // 5)  % 4
 
-	if G.keystates[1] == True and player.right < 790:
+	if G.keystates[1] == True and player.right < 800:
 			G.index=10+(G.factor // 5)  % 4
 			G.ball_x_velocity += G.factor * 0.25 * G.ball_dir_x
 	

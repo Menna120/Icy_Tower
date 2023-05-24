@@ -3,8 +3,6 @@
 frastom_top = 800
 frastom_bottom = 0
 frastom_y = 0
-g = 9.8
-start = False
 
 #ball
 squirrel=None
@@ -18,7 +16,7 @@ land = False #*
 jumping = False
 moving_up = 16
 moving_down = 0
-increaseF = True
+increaseR = True
 #keyboard
 keystates = [False, False, False, False]
 gameover= False

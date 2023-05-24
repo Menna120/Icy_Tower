@@ -8,36 +8,46 @@ def keypress(key, x, y):
 	if G.squirrel.left > 0 and key == GLUT_KEY_LEFT:
 		G.ball_dir_x = -1
 		G.keystates[0] = True
-		G.increaseF = True
+		G.keystates[1] = False
 		G.stand_left=True
+		if G.increaseR:
+			G.factor=1
+		G.increaseR=False
 
-	""" moving ball to the right"""
-	if G.squirrel.right < 800 and key == GLUT_KEY_RIGHT:
+	# """ moving ball to the right"""
+	elif G.squirrel.right < 800 and key == GLUT_KEY_RIGHT:
 		G.ball_dir_x = 1
+		G.keystates[0] = False
 		G.keystates[1] = True
-		G.increaseF = True
+		if not G.increaseR :
+			G.factor=1
 		G.stand_left=False
+		G.increaseR=True
 
-	""" jumping """
-	if key == GLUT_KEY_UP:
+	# """ jumping """
+	elif key == GLUT_KEY_UP:
 		G.keystates[2] = True
 		G.jumping = True
 		G.on_plate=False
 
-	""" BEGIN"""
-	if key == b' ' and G.gamestart is False:
+	# """ BEGIN"""
+	elif key == b' ' and G.gamestart is False:
 		G.gamestart = True
 		G.gameover = False
 
-	#glutPostRedisplay()
+	glutPostRedisplay()
 
 def reset_keys(key,x,y):
-	if G.keystates[0]==True:
+	if  key == GLUT_KEY_LEFT:
 		G.index=6
+		G.keystates[0]=False
 		
-	if G.keystates[1]==True:
+	if  key == GLUT_KEY_RIGHT:
 		G.index=7
+		G.keystates[1]=False
+		G.increaseR = False
 
-	G.keystates = [False, False, False, False]
-	G.increaseF = False
+	if key == GLUT_KEY_UP:
+		G.keystates[2]=False
+
 	glutPostRedisplay() # to redraw the scene
